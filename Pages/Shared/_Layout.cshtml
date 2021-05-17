@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    @*<title>@ViewData["Title"] - Proj</title>*@
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+  
+    <link href="~/css/site.css" rel="stylesheet" />
+</head>
+<body>
+    <header>
+
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-dark border-bottom box-shadow mb-3 t">
+            <div class="container">
+                <img src="~/images/logo.png" asp-append-version="true" width="50" height="50" style="border:solid;border-radius:50%;border-color:whitesmoke">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <partial name="_LoginPartial" />
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-area="" asp-page="/Index">
+                                <div> Home</div>
+                                
+                            </a>
+                        </li>
+     
+                        <li class="nav-item m-2" style="margin-left:50px">
+
+                            <div class="btn-group">
+                                <button type="button" style="background-color:#ff6a04;color:white" class="btn">Categories</button>
+                                <button type="button" style="background-color: #ff6a00;color:white" class="btn dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span class="sr-only">Toggle Dropdown</span>
+                                </button>
+
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="/User/Clothes">Clothes</a>
+                                    <a class="dropdown-item" href="/User/Machine">Machines</a>
+                                    <a class="dropdown-item" href="/User/Watches">Smart watchs</a>
+                                    <a class="dropdown-item" href="/User/Shose">Shoes</a>
+
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container-fluid">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+
+    <footer class="border-top footer text-muted badge-dark">
+        <div class="  text-center font-italic text-md-center text-secondary p-1 ">
+            The only way to prove you are a good sport is to lose
+            <img src="~/images/award.png" asp-append-version="true" width="50" class=" p-1 ">
+        </div>
+        <div class=" text-center p-2">
+            <a href="https://www.facebook.com">  <img src="~/images/facebook.svg" asp-append-version="true" width="50" ></a>
+            <a href="https://www.twitter.com">  <img src="~/images/twitter.svg" asp-append-version="true" width="50" class=" p-1"></a>
+            <a href="https://www..com">  <img src="~/images/instagram.svg" asp-append-version="true" width="50" ></a>
+
+        </div>
+        <div class=" text-center text-sm text-secondary">
+            <small> &copy;copywrite All rights resrved <a asp-area="" asp-page="/Home">Home</a></small>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

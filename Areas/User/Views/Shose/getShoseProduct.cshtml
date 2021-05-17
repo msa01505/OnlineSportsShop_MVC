@@ -1,0 +1,62 @@
+﻿@addTagHelper "*,Microsoft.AspNetCore.Mvc.TagHelpers"
+@{
+    ViewData["Title"] = "getShoseProduct";
+    var shose = ViewBag._shose;
+    var srcImg = "~/images/Shoes/" + @shose.Source;
+}
+<link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<link href="~/css/ClothesDetails.css" rel="stylesheet" />
+
+<div class="container mt-5 mb-5">
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-10">
+            <div class="card">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="images p-3">
+                            <div class="text-center p-4"> <img asp-append-version="true" id="main-image" src=@srcImg width="250" /> </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="product p-4">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="d-flex align-items-center">
+                                <i class="fa fa-long-arrow-left"></i> 
+                                <a asp-action="Index" class="ml-1">Back</a> 
+                                    </div> <i class="fa fa-shopping-cart text-muted"></i>
+                            </div>
+                            <div class="mt-4 mb-3">
+                                <span class="text-uppercase text-muted brand">@shose.Name/@shose.Brand</span>
+                              
+                                <span>@shose.Color /</span>
+
+                                <span>@shose.Gender</span>
+                                <div class="price d-flex flex-row align-items-center">
+                                    <span class="act-price">$@shose.Price</span>
+                                </div>
+                            </div>
+                            <p class="about">@shose.Discrbtion</p>
+                            <div class="sizes mt-5">
+                                <h6 class="text-uppercase">Size</h6>
+                                <label >Available Size : </label>
+                                
+                                <label class="radio"> 
+                                <input type="radio" name="size" value="39"> 
+                                <span>39</span> </label> <label class="radio">
+                                <input type="radio" name="size" value="40"> 
+                                <span>40</span> </label> <label class="radio">
+                                <input type="radio" name="size" value="42"> <span>42</span> </label> 
+                                <label class="radio"> <input type="radio" name="size" value="44"> <span>44</span> </label>
+                            </div>
+                            <div class="cart mt-4 align-items-center">
+                                <a  asp-action="AddToCart" asp-route-id="@shose.ID"  class="btn btn-danger text-uppercase mr-2 px-4">Add to cart</a>
+                                <i class="fa fa-heart text-muted"></i> <i class="fa fa-share-alt text-muted"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

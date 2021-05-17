@@ -1,0 +1,73 @@
+﻿@addTagHelper "*,Microsoft.AspNetCore.Mvc.TagHelpers"
+@{
+    ViewData["Title"] = "Index";
+    var items = ViewBag.cart;
+    var Url = "https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_xclick&amount=" + (ViewBag.Total) + "&business=SportShopping@gmail.com&item_name=Sports&return=https://localhost:44363/User/CartList/Success"; 
+
+}
+<link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<link href="~/css/CartList.css" rel="stylesheet" />
+<link href="~/css/payment.css" rel="stylesheet" />
+<div class="cart_section">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-10 offset-lg-1">
+                <div class="cart_container">
+                    <div class="cart_title">Shopping Cart<small> (@ViewBag.ItemCount items in your cart) </small></div>
+                    <div class="cart_items">
+                        <ul class="cart_list">
+                            @foreach (var item in items)
+                            {
+                                var srcImg = "~/images/"+@item.ProductItem.Type+"/" + @item.ProductItem.Source;
+                                var TotalItem = @item.TotalAmount * @item.ProductItem.Price;
+                                <li class="cart_item clearfix">
+                                    <div class="cart_item_image"><img asp-append-version="true" src=@srcImg alt=""></div>
+                                    <div class="cart_item_info d-flex flex-md-row flex-column justify-content-between">
+                                        <div class="cart_item_name cart_info_col">
+                                            <div class="cart_item_title">Name</div>
+                                            <div class="cart_item_text">@item.ProductItem.Name</div>
+                                        </div>
+                                        <div class="cart_item_color cart_info_col">
+                                            <div class="cart_item_title">Color</div>
+                                            <div class="cart_item_text"><span style="background-color:@item.ProductItem.Color.ToLower();"></span>@item.ProductItem.Color</div>
+                                        </div>
+                                        <div class="cart_item_quantity cart_info_col">
+                                            <div class="cart_item_title">Quantity</div>
+                                            <div class="cart_item_text">@item.TotalAmount</div>
+                                        </div>
+                                        <div class="cart_item_price cart_info_col">
+                                            <div class="cart_item_title">Price</div>
+                                            <div class="cart_item_text">$@item.ProductItem.Price</div>
+                                        </div>
+                                        <div class="cart_item_total cart_info_col">
+                                            <div class="cart_item_title">Total</div>
+                                            <div class="cart_item_text">$@TotalItem</div>
+                                        </div>
+                                        <div>
+                                           @* <a class="btn btn-success" asp-action="Add" asp-route-Product="@item" asp-route-userID="252e1875-ce05-4367-86dd-fc94fc15dcde">+</a>*@
+                                            <a class="btn btn-danger" asp-action="RemoveFromCart" asp-route-id="@item.ID" >-</a>
+                                        </div>
+                                    </div>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                    <div class="order_total">
+                        <div class="order_total_content text-md-right">
+                            <div class="order_total_title">Order Total:</div>
+                            <div class="order_total_amount">$@ViewBag.Total</div>
+                        </div>
+                    </div>
+                    <div class="cart_buttons">
+                        <a asp-area="" asp-controller="Home" asp-action="Index" class="button cart_button_clear">Continue Shopping</a>
+                        <a href =@Url class="btn btn-primary launch" >
+                            <i class="fa fa-rocket"></i> Pay Now
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

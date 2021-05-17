@@ -1,0 +1,73 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+<link href="~/css/StyleSheet.css" rel="stylesheet" />
+
+<div class="text-center">
+
+    <div class="slideshowContainer">
+
+       
+        <div class="slideshowContainer">
+
+   
+            <img class="imageSlides" src="~/images/Slider/1.jpg" style="width:1000px; height:230px;">
+            <img class="imageSlides" src="~/images/Slider/2.jpg" style="width:1000px; height:230px;">
+            <img class="imageSlides" src="~/images/Slider/3.jpg" style="width:1000px; height:230px;">
+            <img class="imageSlides" src="~/images/Slider/4.jpg" style="width:1000px; height:230px;">
+
+            <span id="leftArrow" class="slideshowArrow">&#8249;</span>
+            <span id="rightArrow" class="slideshowArrow">&#8250;</span>
+
+            <div class="slideshowCircles">
+               
+                <span class="circle dot"></span>
+                <span class="circle"></span>
+                <span class="circle"></span>
+                <span class="circle"></span>
+
+            </div>
+
+        </div>
+
+
+
+
+    </div>
+    <div class="container d-flex m-3">
+       
+        <div class="col-3 m-2">
+            <a asp-area="User" asp-controller="Machine" asp-action="Index">
+                <img class="img-fluid rounded" src="~/images/11.jpg" style="width:200px ;height:200px" />
+
+            </a>
+        </div>
+        
+        
+        <div class="col-3 m-2">
+            <a asp-area="User" asp-controller="Shose" asp-action="Index">
+                <img class="img-fluid rounded" src="~/images/2.jpg" style="width:200px ;height:200px" />
+
+            </a>
+        </div>
+        
+       
+        <div class="col-3 m-2">
+            <a asp-area="User" asp-controller="Watches" asp-action="Index">
+                <img class="img-fluid rounded" src="~/images/33.jpg" style="width: 200px;height: 200px" />
+
+            </a>
+        </div>
+        
+       
+        <div class="col-3 m-2">
+            <a asp-area="User" asp-controller="Clothes" asp-action="Index">
+                <img class="img-fluid rounded" src="~/images/4.jpg" style="width:200px ;height:200px" />
+
+            </a>
+        </div>
+    </div>
+</div>
+<script src="~/js/JavaScript.js"></script>

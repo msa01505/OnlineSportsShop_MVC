@@ -1,0 +1,36 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using Proj.Models;
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
+
+<ul class="navbar-nav">
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <li class="nav-item">
+            <a class="nav-link text-light" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name!!</a>
+        </li>
+        <li class="nav-item">
+            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
+                <button type="submit" class="nav-link btn btn-link text-light">Logout</button>
+                <a asp-area="User" asp-controller="CartList" asp-action="Index" style="border:solid #cecece">
+                        <img src="~/images/shopping_cart.png" style="width:50px;height:60px;border:solid;border-radius:50%" />
+                </a>
+            </form>
+        </li>
+    }
+    else
+    {
+        <li class="nav-item">
+            <a class="nav-link text-light" asp-area="Identity" asp-page="/Account/Register">Register</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-light" asp-area="Identity" asp-page="/Account/Login">Login</a>
+        </li>
+        <li>
+            <a asp-area="User" asp-controller="CartList" asp-action="Index">
+
+                <img src="~/images/shopping_cart.png" style="width:50px;height:60px;border:solid;border-radius:50%" />
+            </a>
+        </li>
+    }
+</ul>
